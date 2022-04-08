@@ -1,0 +1,86 @@
+enter  network config file dir 
+creat bak dir and copy file
+del bond file ,modify dev config file 
+============
+docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 0.0.0.0
+enp134s0f0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 192.168.5.11  netmask 255.255.255.0  broadcast 192.168.5.255
+enp134s0f1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.6.11  netmask 255.255.255.0  broadcast 192.168.6.255
+enp59s0f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.180.0.82  netmask 255.255.254.0  broadcast 10.180.1.255
+enp59s0f1: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 192.168.0.1  netmask 255.255.255.0  broadcast 192.168.0.255
+====================================== ping test ===================================
+PING 10.180.0.83 (10.180.0.83) 56(84) bytes of data.
+64 bytes from 10.180.0.83: icmp_seq=1 ttl=64 time=0.235 ms
+64 bytes from 10.180.0.83: icmp_seq=2 ttl=64 time=0.461 ms
+64 bytes from 10.180.0.83: icmp_seq=3 ttl=64 time=0.182 ms
+64 bytes from 10.180.0.83: icmp_seq=4 ttl=64 time=0.147 ms
+64 bytes from 10.180.0.83: icmp_seq=5 ttl=64 time=0.170 ms
+
+--- 10.180.0.83 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4001ms
+rtt min/avg/max/mdev = 0.147/0.239/0.461/0.114 ms
+========			 MIGRATED TCP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 10.180.0.83 () port 0 AF_INET
+========			 Recv   Send    Send                          
+========			 Socket Socket  Message  Elapsed              
+========			 Size   Size    Size     Time     Throughput  
+========			 bytes  bytes   bytes    secs.    10^6bits/sec  
+========			 
+366 [FAILED]	2022-04-08 18:50:28	 87380 16384 16384 10.03 366.53
+356 [FAILED]	2022-04-08 18:50:38	 87380 16384 16384 10.03 356.73
+337 [FAILED]	2022-04-08 18:50:48	 87380 16384 16384 10.03 337.63
+334 [FAILED]	2022-04-08 18:50:58	 87380 16384 16384 10.04 334.51
+350 [FAILED]	2022-04-08 18:51:08	 87380 16384 16384 10.03 350.40
+367 [FAILED]	2022-04-08 18:51:18	 87380 16384 16384 10.04 367.44
+367 [FAILED]	2022-04-08 18:51:28	 87380 16384 16384 10.03 367.42
+====================================== ping test ===================================
+PING 192.168.6.12 (192.168.6.12) 56(84) bytes of data.
+64 bytes from 192.168.6.12: icmp_seq=1 ttl=64 time=0.288 ms
+64 bytes from 192.168.6.12: icmp_seq=2 ttl=64 time=0.120 ms
+64 bytes from 192.168.6.12: icmp_seq=3 ttl=64 time=0.131 ms
+64 bytes from 192.168.6.12: icmp_seq=4 ttl=64 time=0.159 ms
+64 bytes from 192.168.6.12: icmp_seq=5 ttl=64 time=0.153 ms
+
+--- 192.168.6.12 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4001ms
+rtt min/avg/max/mdev = 0.120/0.170/0.288/0.061 ms
+========			 MIGRATED TCP STREAM TEST from 0.0.0.0 (0.0.0.0) port 0 AF_INET to 192.168.6.12 () port 0 AF_INET
+========			 Recv   Send    Send                          
+========			 Socket Socket  Message  Elapsed              
+========			 Size   Size    Size     Time     Throughput  
+========			 bytes  bytes   bytes    secs.    10^6bits/sec  
+========			 
+21521 [PASS]	2022-04-08 18:51:42	 87380 16384 16384 10.00 21521.76
+20874 [PASS]	2022-04-08 18:51:52	 87380 16384 16384 10.00 20874.01
+21215 [PASS]	2022-04-08 18:52:02	 87380 16384 16384 10.01 21215.92
+19262 [PASS]	2022-04-08 18:52:13	 87380 16384 16384 10.00 19262.59
+20957 [PASS]	2022-04-08 18:52:23	 87380 16384 16384 10.00 20957.66
+21475 [PASS]	2022-04-08 18:52:33	 87380 16384 16384 10.00 21475.88
+19847 [PASS]	2022-04-08 18:52:43	 87380 16384 16384 10.01 19847.05
+20557 [PASS]	2022-04-08 18:52:53	 87380 16384 16384 10.00 20557.57
+20844 [PASS]	2022-04-08 18:53:03	 87380 16384 16384 10.00 20844.40
+19671 [PASS]	2022-04-08 18:53:13	 87380 16384 16384 10.00 19671.51
+19196 [PASS]	2022-04-08 18:53:23	 87380 16384 16384 10.00 19196.47
+20625 [PASS]	2022-04-08 18:53:33	 87380 16384 16384 10.00 20625.97
+19513 [PASS]	2022-04-08 18:53:43	 87380 16384 16384 10.00 19513.16
+20187 [PASS]	2022-04-08 18:53:53	 87380 16384 16384 10.00 20187.19
+19593 [PASS]	2022-04-08 18:54:03	 87380 16384 16384 10.01 19593.76
+20871 [PASS]	2022-04-08 18:54:13	 87380 16384 16384 10.00 20871.65
+21453 [PASS]	2022-04-08 18:54:23	 87380 16384 16384 10.00 21453.89
+19252 [PASS]	2022-04-08 18:54:33	 87380 16384 16384 10.00 19252.75
+19666 [PASS]	2022-04-08 18:54:43	 87380 16384 16384 10.00 19666.87
+====================================== ping test ===================================
+PING 192.168.8.12 (192.168.8.12) 56(84) bytes of data.
+
+--- 192.168.8.12 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 4000ms
+
+====================================== ping test ===================================
+PING 192.168.10.12 (192.168.10.12) 56(84) bytes of data.
+
+--- 192.168.10.12 ping statistics ---
+5 packets transmitted, 0 received, 100% packet loss, time 3999ms
+

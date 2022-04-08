@@ -1,0 +1,2 @@
+[41m [ Fail ] Some GE Ethernet ports fail the performance test.				 [0m
+[42m [ Pass ] 10 GE Ethernet port performance tests passed.				 [0m

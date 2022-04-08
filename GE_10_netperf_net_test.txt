@@ -1,0 +1,4 @@
+servreIP: 192.168.6.12
+total_count: 18
+fail_count: 0
+
