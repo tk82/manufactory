@@ -23,9 +23,15 @@ check_bw()
 			echo "[PASS]"
 		fi
 		exit;;
-	2)  # 10GE 万兆 9300 * 1000,000 bps(比特每秒)
-#		if [ $bw -lt 9300 ];then
+	2)  # 10GE 万兆 9100 * 1000,000 bps(比特每秒)
 		if [ $bw -lt 9100 ];then
+			echo "[FAILED]"
+		else
+			echo "[PASS]"
+		fi
+		exit;;
+	3)  # 10GE 万兆 21000 * 1000,000 bps(比特每秒)
+		if [ $bw -lt 21000 ];then
 			echo "[FAILED]"
 		else
 			echo "[PASS]"
@@ -42,13 +48,16 @@ count=$((testTime/10))
 tmpfile=${serverIP}_tmp
 
 # 远端IP、测试次数
-if [ $portType -eq 2 ];then
+if [ $portType -eq 3 ];then
+	echo -e "servreIP: ${serverIP}\ntotal_count: ${count}" >> GE_25_netperf_net_test.txt
+elif [ $portType -eq 2 ];then
 	echo -e "servreIP: ${serverIP}\ntotal_count: ${count}" >> GE_10_netperf_net_test.txt
-else
+elif [ $portType -eq 1 ];then
 	echo -e "servreIP: ${serverIP}\ntotal_count: ${count}" >> GE_netperf_net_test.txt
 fi
 
-for((i=0;i<=$count;i++));do
+# 总共次数是 count + 1，应该不对第一次数据判断 
+for((i = 0; i <= $count; i++));do
 	netperf -H $serverIP > ${tmpfile}
 	if [ $i -eq 0 ];then
 #		echo -e "========\t\t\t `cat ./${tmpfile} | sed -n "1p"`" >> ./manufactory_net_test.txt
@@ -64,7 +73,11 @@ for((i=0;i<=$count;i++));do
 	bw=`cat ${tmpfile} | sed -n '7p' | awk '{print $5}'`
 
 	bw_1=`echo $bw | sed "s/\..*//g"`
-	if [ $portType -eq 2 ];then
+	if [ $portType -eq 3 ];then
+            if [ $bw_1 -lt 21000 ];then
+	        let fail_count+=1
+	    fi
+        elif [ $portType -eq 2 ];then
             if [ $bw_1 -lt 9100 ];then
 	        let fail_count+=1
 	    fi
@@ -77,8 +90,10 @@ for((i=0;i<=$count;i++));do
 	echo -e `check_bw $portType $bw`"\t"`date +"%Y-%m-%d %H:%M:%S"`"\t" `cat ./${tmpfile} | sed -n "7p"` >> ./manufactory_net_test.txt
 done
 
-if [ $portType -eq 2 ];then
+if [ $portType -eq 3 ];then
+	echo -e "fail_count: $fail_count\n" >> GE_25_netperf_net_test.txt
+elif [ $portType -eq 2 ];then
 	echo -e "fail_count: $fail_count\n" >> GE_10_netperf_net_test.txt
-else
+elif [ $portType -eq 1 ];then
 	echo -e "fail_count: $fail_count\n" >> GE_netperf_net_test.txt
 fi

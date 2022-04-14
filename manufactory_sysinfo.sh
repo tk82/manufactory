@@ -167,4 +167,4 @@ check_VENDOR_INFO $product_Model
 check_Server_Conf
 check_Disk_Link_Status
 check_Port_Speed
-rm -f PortLinkSpeed_*
+#rm -f PortLinkSpeed_*

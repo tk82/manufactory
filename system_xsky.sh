@@ -192,7 +192,7 @@ net_check()
 		fi
 EOF
 		initial_value=0
-		support_link_modes1=`ethtool enp134s0f0 | grep -A100 "Supported link modes" | grep -B100 "Supported pause frame use" | grep "[0-9].*"`
+		support_link_modes1=`ethtool $dev | grep -A100 "Supported link modes" | grep -B100 "Supported pause frame use" | grep "[0-9].*"`
 		support_link_modes2=`echo $support_link_modes1 | awk -F":" '{print $2}'`
 		for i in $support_link_modes2;do
 			tmp=`echo $i | sed 's/base.*//g'`

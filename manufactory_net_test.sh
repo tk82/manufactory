@@ -63,10 +63,10 @@ modify_type()
 	port_speed=`ethtool $port_name | grep "Speed:" | awk '{print $2}'`
 	if [ "$port_speed" == "1000Mb/s" ];then
 		TYPE=1
-	elif [ "$port_speed" == "10000Mb/s" -o "$port_speed" == "25000Mb/s" ];then
+	elif [ "$port_speed" == "10000Mb/s" ];then
 		TYPE=2
-	else
-		TYPE=0
+	elif [ "$port_speed" == "25000Mb/s" ];then
+		TYPE=3
 	fi
 	echo $TYPE
 }
@@ -160,6 +160,8 @@ net_test_XE2100G2()
       sh ./manufactory_net.sh $serverIP_21 ${GE_net_test_time} $portTYPE
     elif [ $portTYPE -eq 2 ];then
       sh ./manufactory_net.sh $serverIP_21 ${GE10_25_net_test_time} $portTYPE
+    elif [ $portTYPE -eq 3 ];then
+      sh ./manufactory_net.sh $serverIP_21 ${GE10_25_net_test_time} $portTYPE
     fi
 
     sh ./pingtest.sh $serverIP_23 >> ./manufactory_net_test.txt
@@ -167,6 +169,8 @@ net_test_XE2100G2()
     if [ $portTYPE -eq 1 ];then
       sh ./manufactory_net.sh $serverIP_23 ${GE_net_test_time} $portTYPE
     elif [ $portTYPE -eq 2 ];then
+      sh ./manufactory_net.sh $serverIP_23 ${GE10_25_net_test_time} $portTYPE
+    elif [ $portTYPE -eq 3 ];then
       sh ./manufactory_net.sh $serverIP_23 ${GE10_25_net_test_time} $portTYPE
     fi
 
@@ -176,6 +180,8 @@ net_test_XE2100G2()
       sh ./manufactory_net.sh $serverIP_25 ${GE_net_test_time} $portTYPE
     elif [ $portTYPE -eq 2 ];then
       sh ./manufactory_net.sh $serverIP_25 ${GE10_25_net_test_time} $portTYPE
+    elif [ $portTYPE -eq 3 ];then
+      sh ./manufactory_net.sh $serverIP_25 ${GE10_25_net_test_time} $portTYPE
     fi
 
     sh ./pingtest.sh $serverIP_27 >> ./manufactory_net_test.txt
@@ -183,6 +189,8 @@ net_test_XE2100G2()
     if [ $portTYPE -eq 1 ];then
       sh ./manufactory_net.sh $serverIP_27 ${GE_net_test_time} $portTYPE
     elif [ $portTYPE -eq 2 ];then
+      sh ./manufactory_net.sh $serverIP_27 ${GE10_25_net_test_time} $portTYPE
+    elif [ $portTYPE -eq 3 ];then
       sh ./manufactory_net.sh $serverIP_27 ${GE10_25_net_test_time} $portTYPE
     fi
 
@@ -196,6 +204,8 @@ net_test_XE2100G2()
       sh ./manufactory_net.sh $serverIP_12 ${GE_net_test_time} $portTYPE
     elif [ $portTYPE -eq 2 ];then
       sh ./manufactory_net.sh $serverIP_12 ${GE10_25_net_test_time} $portTYPE
+    elif [ $portTYPE -eq 3 ];then
+      sh ./manufactory_net.sh $serverIP_12 ${GE10_25_net_test_time} $portTYPE
     fi
 
     sh ./pingtest.sh $serverIP_14 >> ./manufactory_net_test.txt
@@ -204,13 +214,17 @@ net_test_XE2100G2()
       sh ./manufactory_net.sh $serverIP_14 ${GE_net_test_time} $portTYPE
     elif [ $portTYPE -eq 2 ];then
       sh ./manufactory_net.sh $serverIP_14 ${GE10_25_net_test_time} $portTYPE
+    elif [ $portTYPE -eq 3 ];then
+      sh ./manufactory_net.sh $serverIP_14 ${GE10_25_net_test_time} $portTYPE
     fi
 
-        sh ./pingtest.sh $serverIP_16 >> ./manufactory_net_test.txt
-        portTYPE=`modify_type $serverIP_26`
+    sh ./pingtest.sh $serverIP_16 >> ./manufactory_net_test.txt
+    portTYPE=`modify_type $serverIP_26`
     if [ $portTYPE -eq 1 ];then
       sh ./manufactory_net.sh $serverIP_16 ${GE_net_test_time} $portTYPE
     elif [ $portTYPE -eq 2 ];then
+      sh ./manufactory_net.sh $serverIP_16 ${GE10_25_net_test_time} $portTYPE
+    elif [ $portTYPE -eq 3 ];then
       sh ./manufactory_net.sh $serverIP_16 ${GE10_25_net_test_time} $portTYPE
     fi
 
@@ -219,6 +233,8 @@ net_test_XE2100G2()
     if [ $portTYPE -eq 1 ];then
       sh ./manufactory_net.sh $serverIP_18 ${GE_net_test_time} $portTYPE
     elif [ $portTYPE -eq 2 ];then
+      sh ./manufactory_net.sh $serverIP_18 ${GE10_25_net_test_time} $portTYPE
+    elif [ $portTYPE -eq 3 ];then
       sh ./manufactory_net.sh $serverIP_18 ${GE10_25_net_test_time} $portTYPE
     fi
 
@@ -241,37 +257,47 @@ net_test_XE3100G2()
       sh ./manufactory_net.sh $serverIP_21 ${GE_net_test_time} $portTYPE
     elif [ $portTYPE -eq 2 ];then
       sh ./manufactory_net.sh $serverIP_21 ${GE10_25_net_test_time} $portTYPE
+    elif [ $portTYPE -eq 3 ];then
+      sh ./manufactory_net.sh $serverIP_21 ${GE10_25_net_test_time} $portTYPE
     fi
 
     sh ./pingtest.sh $serverIP_23 >> ./manufactory_net_test.txt
     portTYPE=`modify_type $serverIP_13`
-    if [ $portTYPE -eq 1 ];then
+    if [[ $portTYPE -eq 1 ]];then
       sh ./manufactory_net.sh $serverIP_23 ${GE_net_test_time} $portTYPE
-    elif [ $portTYPE -eq 2 ];then
+    elif [[ $portTYPE -eq 2 ]];then
+      sh ./manufactory_net.sh $serverIP_23 ${GE10_25_net_test_time} $portTYPE
+    elif [[ $portTYPE -eq 3 ]];then
       sh ./manufactory_net.sh $serverIP_23 ${GE10_25_net_test_time} $portTYPE
     fi
 
     sh ./pingtest.sh $serverIP_25 >> ./manufactory_net_test.txt
     portTYPE=`modify_type $serverIP_15`
-    if [ $portTYPE -eq 1 ];then
+    if [[ $portTYPE -eq 1 ]];then
       sh ./manufactory_net.sh $serverIP_25 ${GE_net_test_time} $portTYPE
-    elif [ $portTYPE -eq 2 ];then
+    elif [[ $portTYPE -eq 2 ]];then
+      sh ./manufactory_net.sh $serverIP_25 ${GE10_25_net_test_time} $portTYPE
+    elif [[ $portTYPE -eq 3 ]];then
       sh ./manufactory_net.sh $serverIP_25 ${GE10_25_net_test_time} $portTYPE
     fi
 
     sh ./pingtest.sh $serverIP_27 >> ./manufactory_net_test.txt
     portTYPE=`modify_type $serverIP_17`
-    if [ $portTYPE -eq 1 ];then
+    if [[ $portTYPE -eq 1 ]];then
       sh ./manufactory_net.sh $serverIP_27 ${GE_net_test_time} $portTYPE
-    elif [ $portTYPE -eq 2 ];then
+    elif [[ $portTYPE -eq 2 ]];then
+      sh ./manufactory_net.sh $serverIP_27 ${GE10_25_net_test_time} $portTYPE
+    elif [[ $portTYPE -eq 3 ]];then
       sh ./manufactory_net.sh $serverIP_27 ${GE10_25_net_test_time} $portTYPE
     fi
 
     sh ./pingtest.sh $serverIP_29 >> ./manufactory_net_test.txt
     portTYPE=`modify_type $serverIP_19`
-    if [ $portTYPE -eq 1 ];then
+    if [[ $portTYPE -eq 1 ]];then
       sh ./manufactory_net.sh $serverIP_29 ${GE_net_test_time} $portTYPE
-    elif [ $portTYPE -eq 2 ];then
+    elif [[ $portTYPE -eq 2 ]];then
+      sh ./manufactory_net.sh $serverIP_29 ${GE10_25_net_test_time} $portTYPE
+    elif [[ $portTYPE -eq 3 ]];then
       sh ./manufactory_net.sh $serverIP_29 ${GE10_25_net_test_time} $portTYPE
     fi
 
@@ -281,41 +307,51 @@ net_test_XE3100G2()
 
     sh ./pingtest.sh $serverIP_12 >> ./manufactory_net_test.txt
     portTYPE=`modify_type $serverIP_21`
-    if [ $portTYPE -eq 1 ];then
+    if [[ $portTYPE -eq 1 ]];then
       sh ./manufactory_net.sh $serverIP_12 ${GE_net_test_time} $portTYPE
-    elif [ $portTYPE -eq 2 ];then
+    elif [[ $portTYPE -eq 2 ]];then
+      sh ./manufactory_net.sh $serverIP_12 ${GE10_25_net_test_time} $portTYPE
+    elif [[ $portTYPE -eq 3 ]];then
       sh ./manufactory_net.sh $serverIP_12 ${GE10_25_net_test_time} $portTYPE
     fi
 
     sh ./pingtest.sh $serverIP_14 >> ./manufactory_net_test.txt
     portTYPE=`modify_type $serverIP_24`
-    if [ $portTYPE -eq 1 ];then
+    if [[ $portTYPE -eq 1 ]];then
       sh ./manufactory_net.sh $serverIP_14 ${GE_net_test_time} $portTYPE
-    elif [ $portTYPE -eq 2 ];then
+    elif [[ $portTYPE -eq 2 ]];then
+      sh ./manufactory_net.sh $serverIP_14 ${GE10_25_net_test_time} $portTYPE
+    elif [[ $portTYPE -eq 3 ]];then
       sh ./manufactory_net.sh $serverIP_14 ${GE10_25_net_test_time} $portTYPE
     fi
 
     sh ./pingtest.sh $serverIP_16 >> ./manufactory_net_test.txt
     portTYPE=`modify_type $serverIP_26`
-    if [ $portTYPE -eq 1 ];then
+    if [[ $portTYPE -eq 1 ]];then
       sh ./manufactory_net.sh $serverIP_16 ${GE_net_test_time} $portTYPE
-    elif [ $portTYPE -eq 2 ];then
+    elif [[ $portTYPE -eq 2 ]];then
+      sh ./manufactory_net.sh $serverIP_16 ${GE10_25_net_test_time} $portTYPE
+    elif [[ $portTYPE -eq 3 ]];then
       sh ./manufactory_net.sh $serverIP_16 ${GE10_25_net_test_time} $portTYPE
     fi
 
     sh ./pingtest.sh $serverIP_18 >> ./manufactory_net_test.txt
     portTYPE=`modify_type $serverIP_28`
-    if [ $portTYPE -eq 1 ];then
+    if [[ $portTYPE -eq 1 ]];then
       sh ./manufactory_net.sh $serverIP_18 ${GE_net_test_time} $portTYPE
-    elif [ $portTYPE -eq 2 ];then
+    elif [[ $portTYPE -eq 2 ]];then
+      sh ./manufactory_net.sh $serverIP_18 ${GE10_25_net_test_time} $portTYPE
+    elif [[ $portTYPE -eq 3 ]];then
       sh ./manufactory_net.sh $serverIP_18 ${GE10_25_net_test_time} $portTYPE
     fi
 
     sh ./pingtest.sh $serverIP_110 >> ./manufactory_net_test.txt
     portTYPE=`modify_type $serverIP_210`
-    if [ $portTYPE -eq 1 ];then
+    if [[ $portTYPE -eq 1 ]];then
       sh ./manufactory_net.sh $serverIP_110 ${GE_net_test_time} $portTYPE
-    elif [ $portTYPE -eq 2 ];then
+    elif [[ $portTYPE -eq 2 ]];then
+      sh ./manufactory_net.sh $serverIP_110 ${GE10_25_net_test_time} $portTYPE
+    elif [[ $portTYPE -eq 3 ]];then
       sh ./manufactory_net.sh $serverIP_110 ${GE10_25_net_test_time} $portTYPE
     fi
 

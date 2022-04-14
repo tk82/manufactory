@@ -1,0 +1,101 @@
+=======================================================================
+BIOS与BMC相关信息：
+	BIOS Infomation
+		BIOS Version 	: XSKY57.18
+		Release Date 	: 09/15/2021
+	BIOS DMI Serial Number	: 0000000000000000000000000
+	BIOS DMI Product Name	: X3000
+
+[0m	ME FW version 		:  4.1.4.381 (Recovery), 4.1.4.381 (Operational)
+
+	BMC Firmware Revision         : 1.14.18
+		 Board Serial  	: 0000000000000000000000000
+		 Board Mfg  	: XSKY
+		 Board Product 	: T1DM-E2
+		 Product Manufacturer : XSKY
+
+	Motherboard CPLD Version: REV 1.101
+	Backplane CPLD Version 	: REV 1.02
+
+	chassis			: TU201D12ERI01-NV
+========================================================================
+CPU信息：
+	CPU: Intel(R) Xeon(R) Silver 4214R CPU @ 2.40GHz
+	CPU: Intel(R) Xeon(R) Silver 4214R CPU @ 2.40GHz
+
+========================================================================
+内存信息：
+	Memory quantity: 2
+ 
+	Asset Tag: CPU1_DIMM_A1 Manufacturer: Micron Serial Number: F1896F80 Speed: 2933 MT/s Size: 32 GB 
+	Asset Tag: CPU2_DIMM_A1 Manufacturer: Micron Serial Number: F1897F30 Speed: 2933 MT/s Size: 32 GB
+
+========================================================================
+存储资源信息：
+	LSI SAS CARD 	:
+		0    LSI3008   Firmwareversion:16.00.01.00    LogicalID:5454594c:53000623 
+	LSI raid CARD 	:
+	PMC SAS CARD 	:
+	
+	SSD&HDD TOTAL QUANTITY :
+		SSD QUANTITY 	:3
+
+			/dev/sg0 /dev/sda ATA INTEL SSDSC2KG96 0132 
+			/dev/sg1 /dev/sdb ATA Micron_5300_MTFD U001 
+			/dev/sg2 /dev/sdc ATA Micron_5300_MTFD U001
+		HDD QUANTITY 	:10
+ 			
+			/dev/sg3 /dev/sdd ATA ST4000NM000A-2HZ TN02 
+			/dev/sg4 /dev/sde ATA ST4000NM000A-2HZ TN02 
+			/dev/sg5 /dev/sdf ATA ST4000NM000A-2HZ TN02 
+			/dev/sg6 /dev/sdg ATA ST4000NM000A-2HZ TN02 
+			/dev/sg7 /dev/sdh ATA ST4000NM000A-2HZ TN02 
+			/dev/sg8 /dev/sdi ATA ST4000NM000A-2HZ TN02 
+			/dev/sg9 /dev/sdj ATA ST4000NM000A-2HZ TN02 
+			/dev/sg10 /dev/sdk ATA ST4000NM000A-2HZ TN02 
+			/dev/sg11 /dev/sdl ATA ST4000NM000A-2HZ TN02 
+			/dev/sg12 /dev/sdm ATA ST4000NM000A-2HZ TN02
+	Expander info 	:
+
+		/dev/sg13 T-010D01 2U16S 24Sx12G B025
+	HDD&SSD capacity and link speed 	:
+		sda Capacity 	: 960 GB , 	 link speed : current: 6.0 Gb/s 
+		sdb Capacity 	: 960 GB , 	 link speed : current: 6.0 Gb/s 
+		sdc Capacity 	: 960 GB , 	 link speed : current: 6.0 Gb/s 
+		sdd Capacity 	: 4.00 TB , 	 link speed : current: 6.0 Gb/s 
+		sde Capacity 	: 4.00 TB , 	 link speed : current: 6.0 Gb/s 
+		sdf Capacity 	: 4.00 TB , 	 link speed : current: 6.0 Gb/s 
+		sdg Capacity 	: 4.00 TB , 	 link speed : current: 6.0 Gb/s 
+		sdh Capacity 	: 4.00 TB , 	 link speed : current: 6.0 Gb/s 
+		sdi Capacity 	: 4.00 TB , 	 link speed : current: 6.0 Gb/s 
+		sdj Capacity 	: 4.00 TB , 	 link speed : current: 6.0 Gb/s 
+		sdk Capacity 	: 4.00 TB , 	 link speed : current: 6.0 Gb/s 
+		sdl Capacity 	: 4.00 TB , 	 link speed : current: 6.0 Gb/s 
+		sdm Capacity 	: 4.00 TB , 	 link speed : current: 6.0 Gb/s 
+	M.2 & NVME 	:
+		No NVMe devices detected.
+
+========================================================================
+BMC sersor health 	:
+	BMC SERSOR STATUS IS OK.
+========================================================================
+Mac address 	:
+	BMC dedicate 	:189ba5812ffb
+	BMC NCSI 	:189ba5812ffa
+	OS network device info as below 	:
+Intel(R) NVM Integrity Verification Tool
+Nvmcheck version 1.35.33.03 
+QV SDK version 2.35.33.03
+Copyright(C) 2012 - 2020 Intel Corporation.
+
+NIC B/D/F     Ven-Dev   MAC          ENA Branding string
+=== ========= ========= ============ === ======================================
+ 1) 059/00/00 8086-1521 189BA5812FFC N/A Intel(R) I350 Gigabit Network Connecti
+ 2) 059/00/01 8086-1521 189BA5812FFD N/A Intel(R) I350 Gigabit Network Connecti
+	Check network device link status 	:
+		enp134s0f0 	is 25000M network interface , current  link status : 	Speed: 10000Mb/s
+		enp134s0f1 	is 25000M network interface , current  link status : 	Speed: 25000Mb/s
+		enp59s0f0 	is 1000M network interface , current  link status : 	Speed: 1000Mb/s
+		enp59s0f1 	is 1000M network interface , current  link status : 	Speed: 1000Mb/s
+=========================fc device info ==========================
+NO FC Cards.
