@@ -382,6 +382,7 @@ net_test_XE3100G2()
 #}
 
 net_init
+
 # XE2120G2 XE2130G2 统称为：XE2100G2（两者的差别好像是多一张网卡的区别）
 if [ "$model" == "XE2100G2" ];then
 	net_test_XE2100G2 $N
