@@ -20,28 +20,20 @@ else
     Product_Manufacturer_2=`dmidecode -t 1 | grep "Manufacturer" | awk '{print $2}'`
 
     if [ $Board_Mfg == "XSKY" -o $Product_Manufacturer_1 == "XSKY" ];then
-      ipmitool  fru edit 0 field b 0 "white_card"    # 名字未定 Board Mfg
+      ipmitool  fru edit 0 field b 0 "    "    # 显示为空:4个空格
+      ipmitool  fru edit 0 field b 1 "    "
+      ipmitool  fru edit 0 field b 2 "    "
     fi
     if [ $Product_Manufacturer_2 == "XSKY" ];then
-      ipmitool  fru edit 0 field p 0 "white_card"    # 名字未定 Product Manufacturer
+      ipmitool  fru edit 0 field p 0 "    "
+      ipmitool  fru edit 0 field p 1 "    "
     fi
   else
-# 编辑 ID 为 0，p（P）开头的第一行字段的内容。Product Name : XE3100G2
+# 暂时发现只有这几个能修改
     ipmitool  fru edit 0 field b 0 "XSKY"
+    ipmitool  fru edit 0 field b 1 "T1DM-E2"
+    ipmitool  fru edit 0 field b 2 "0000000000000000000000000"
     ipmitool  fru edit 0 field p 0 "XSKY"
     ipmitool  fru edit 0 field p 1 "$pro_name"
   fi
 fi
-:<< EOF
-FRU Device Description : Builtin FRU Device (ID 0)
- Chassis Type          : Rack Mount Chassis
- Board Mfg Date        : Wed Jul 21 16:51:00 2021
- Board Mfg             : XSKY
- Board Product         : T1DM-E2
- Board Serial          : 22200147T-1ZCWDA00087012103290088
- Board Extra           : 0000000000000000000000000
- Product Manufacturer  : XSKY
- Product Name          : X3000
- Product Serial        : 80900008TWORK000485012108020002
- Product Asset Tag     : 0000000000000000000000000
-EOF

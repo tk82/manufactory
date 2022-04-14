@@ -10,8 +10,10 @@ echo -e "\tBIOS Infomation"
 echo -e "\t\tBIOS"`dmidecode -t 0 |grep -A 3 "BIOS Info" | grep "Version"` | sed "s/\:/ \t\:/g"
 echo -e "\t\t"`dmidecode -t 0 |grep -A 3 "BIOS Info" | grep "Date"` | sed "s/ Release/Release/g" | sed "s/\:/ \t\:/g"
 #	echo -e "BIOS DMI Board Serial\t: `dmidecode -t 2 | grep Serial |awk '{print $3}'`"
-echo -e "\tBIOS DMI Serial Number\t: `dmidecode -t 1 | grep Serial |awk '{print $3}'`"
-echo -e "\tBIOS DMI Product Name\t: `dmidecode -t 1 | grep Product |awk '{print $3}'`"
+#echo -e "\tBIOS DMI Serial Number\t: `dmidecode -t 1 | grep Serial |awk '{print $3}'`"
+#echo -e "\tBIOS DMI Product Name\t: `dmidecode -t 1 | grep Product |awk '{print $3}'`"
+echo -e "\tBIOS DMI Serial Number\t: `ipmitool fru list | grep "Product Serial" | awk '{print $4}'`"
+echo -e "\tBIOS DMI Product Name\t: `ipmitool fru list | grep "Product Name" | awk '{print $4}'`"
 echo
 ./spsInfoLinux64 |grep "FW version" | sed "s/SPS Image/\tME/g" | sed "s/\:/ \t\t\: /g"
 echo
@@ -169,17 +171,16 @@ echo -e "Mac address \t:"
 echo -e "\tBMC dedicate \t:"`ipmitool raw 0x0e 0x52 0x0b 0xa8 0x06 0x00 0x00|sed 's/ //g'`
 echo -e "\tBMC NCSI \t:"`ipmitool raw 0x0e 0x52 0x0b 0xa8 0x06 0x00 0x08|sed 's/ //g'`
 echo -e "\tOS network device info as below \t:"
-./nvmcheck64e /devices  | grep 8086
+#./nvmcheck64e /devices  | grep 8086
+./nvmcheck64e /devices
 ## add net linspeed check##
 net_check()
 {
   # enp59s0f0 enp59s0f1 enp94s0f0 enp94s0f1 .........
 	dev_list=`ls /etc/sysconfig/network-scripts/ |grep -i enp |awk -F "-" '{ print $2 }' | sort | uniq`
-#	echo $dev_list
 	for  dev in $dev_list;do
-#		echo $dev
+:<< EOF
 		drv=`ethtool -i $dev |grep -i driver |awk -F ":" '{print $2}'`
-#		echo $drv
 		if [[ "${drv}"  =~ "igb" ]];then
 			echo -e "\t\t$dev \tis  1000M network interface , current  link status : `ethtool   ${dev}|grep -i speed `"
 		elif [[ "${drv}" =~ "ixgbe" ]];then
@@ -189,6 +190,18 @@ net_check()
 		else
 			echo -e "$dev is not intel network interface ,OOPS  "
 		fi
+EOF
+		initial_value=0
+		support_link_modes1=`ethtool enp134s0f0 | grep -A100 "Supported link modes" | grep -B100 "Supported pause frame use" | grep "[0-9].*"`
+		support_link_modes2=`echo $support_link_modes1 | awk -F":" '{print $2}'`
+		for i in $support_link_modes2;do
+			tmp=`echo $i | sed 's/base.*//g'`
+			if [[ $tmp -gt $initial_value ]];then
+				initial_value="$tmp"
+			fi
+		done
+
+		echo -e "\t\t$dev \tis ${initial_value}M network interface , current  link status : `ethtool ${dev}|grep -i Speed:`"
 	done
 }
 

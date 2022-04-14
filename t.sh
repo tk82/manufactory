@@ -29,7 +29,7 @@ sh ./over.sh
 rst=`dmesg | grep error | wc -l`
 if [ $rst -eq 0 ];then
 	# echo -e "\033[42m 【通过】CPU及内存测试通过。\t\t\t\t\t\t \033[0m" >> $file_name
-	echo -e "\033[42m [ Success ] CPU and memory test passed.\t\t\t\t\t\t \033[0m" >> $file_name
+	echo -e "\033[42m [ Pass ] CPU and memory test passed.\t\t\t\t\t\t \033[0m" >> $file_name
 elif [ $rst -gt 0 ];then
 	# echo -e "\033[41m 【失败】CPU及内存测试不通过。\t\t\\tt\t\t\t \033[0m" >> $file_name
 	echo -e "\033[41m [ Fail ] CPU and memory test failed.\t\t\\tt\t\t\t \033[0m" >> $file_name

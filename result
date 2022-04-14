@@ -1,0 +1,142 @@
+sdb write_1M_direct:
+
+dd: error writing ‘/dev/sdb’: No space left on device
+915716+0 records in
+915715+0 records out
+960197124096 bytes (960 GB) copied, 2365.69 s, 406 MB/s
+SATA Version : current: 6.0 Gb/s
+Smart-health status :  PASSED
+Power_Cycle_Count : 903
+UDMA_CRC_Error_Count : 2
+Command_Timeout : 4189
+sdb read_1M_direct:
+
+915715+1 records in
+915715+1 records out
+960197124096 bytes (960 GB) copied, 2075.34 s, 463 MB/s
+SATA Version : current: 6.0 Gb/s
+Smart-health status :  PASSED
+Power_Cycle_Count : 903
+UDMA_CRC_Error_Count : 2
+Command_Timeout : 4189
+sdc write_1M_direct:
+
+dd: error writing ‘/dev/sdc’: No space left on device
+915716+0 records in
+915715+0 records out
+960197124096 bytes (960 GB) copied, 2369.81 s, 405 MB/s
+SATA Version : current: 6.0 Gb/s
+Smart-health status :  PASSED
+Power_Cycle_Count : 88
+UDMA_CRC_Error_Count : 0
+Command_Timeout : 1430
+sdc read_1M_direct:
+
+915715+1 records in
+915715+1 records out
+960197124096 bytes (960 GB) copied, 2085.42 s, 460 MB/s
+SATA Version : current: 6.0 Gb/s
+Smart-health status :  PASSED
+Power_Cycle_Count : 88
+UDMA_CRC_Error_Count : 0
+Command_Timeout : 1430
+sdd write_1M_1000000:
+
+1000000+0 records in
+1000000+0 records out
+1048576000000 bytes (1.0 TB) copied, 4548.63 s, 231 MB/s
+SATA Version : current: 6.0 Gb/s
+Smart-health status :  PASSED
+Power_Cycle_Count : 48
+UDMA_CRC_Error_Count : 0
+Command_Timeout : 0
+sde write_1M_1000000:
+
+1000000+0 records in
+1000000+0 records out
+1048576000000 bytes (1.0 TB) copied, 4551.44 s, 230 MB/s
+SATA Version : current: 6.0 Gb/s
+Smart-health status :  PASSED
+Power_Cycle_Count : 95
+UDMA_CRC_Error_Count : 0
+Command_Timeout : 0
+sdf write_1M_1000000:
+
+1000000+0 records in
+1000000+0 records out
+1048576000000 bytes (1.0 TB) copied, 4525.83 s, 232 MB/s
+SATA Version : current: 6.0 Gb/s
+Smart-health status :  PASSED
+Power_Cycle_Count : 102
+UDMA_CRC_Error_Count : 0
+Command_Timeout : 0
+sdg write_1M_1000000:
+
+1000000+0 records in
+1000000+0 records out
+1048576000000 bytes (1.0 TB) copied, 4455.76 s, 235 MB/s
+SATA Version : current: 6.0 Gb/s
+Smart-health status :  PASSED
+Power_Cycle_Count : 96
+UDMA_CRC_Error_Count : 0
+Command_Timeout : 0
+sdh write_1M_1000000:
+
+1000000+0 records in
+1000000+0 records out
+1048576000000 bytes (1.0 TB) copied, 4564.43 s, 230 MB/s
+SATA Version : current: 6.0 Gb/s
+Smart-health status :  PASSED
+Power_Cycle_Count : 99
+UDMA_CRC_Error_Count : 0
+Command_Timeout : 0
+sdi write_1M_1000000:
+
+1000000+0 records in
+1000000+0 records out
+1048576000000 bytes (1.0 TB) copied, 4548.18 s, 231 MB/s
+SATA Version : current: 6.0 Gb/s
+Smart-health status :  PASSED
+Power_Cycle_Count : 98
+UDMA_CRC_Error_Count : 0
+Command_Timeout : 0
+sdj write_1M_1000000:
+
+1000000+0 records in
+1000000+0 records out
+1048576000000 bytes (1.0 TB) copied, 4619.28 s, 227 MB/s
+SATA Version : current: 6.0 Gb/s
+Smart-health status :  PASSED
+Power_Cycle_Count : 95
+UDMA_CRC_Error_Count : 0
+Command_Timeout : 0
+sdk write_1M_1000000:
+
+1000000+0 records in
+1000000+0 records out
+1048576000000 bytes (1.0 TB) copied, 4559.06 s, 230 MB/s
+SATA Version : current: 6.0 Gb/s
+Smart-health status :  PASSED
+Power_Cycle_Count : 95
+UDMA_CRC_Error_Count : 0
+Command_Timeout : 0
+sdl write_1M_1000000:
+
+1000000+0 records in
+1000000+0 records out
+1048576000000 bytes (1.0 TB) copied, 4494.56 s, 233 MB/s
+SATA Version : current: 6.0 Gb/s
+Smart-health status :  PASSED
+Power_Cycle_Count : 96
+UDMA_CRC_Error_Count : 0
+Command_Timeout : 0
+sdm write_1M_1000000:
+
+1000000+0 records in
+1000000+0 records out
+1048576000000 bytes (1.0 TB) copied, 4555.46 s, 230 MB/s
+SATA Version : current: 6.0 Gb/s
+Smart-health status :  PASSED
+Power_Cycle_Count : 96
+UDMA_CRC_Error_Count : 0
+Command_Timeout : 0

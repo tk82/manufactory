@@ -1,6 +1,6 @@
 #!/bin/sh
 :<< EOF
-check_result_1()
+check_result()
 {
 	sync
 	while [ 1 ];do
@@ -12,7 +12,7 @@ check_result_1()
 				echo -e "\033[42m [ Pass ] All Ethernet port performance tests passed.\t\t\t\t \033[0m"
 			elif [[ $rst == "FAILED" ]];then
 #				echo -e "\033[41m 【失败】部分以太网端口性能测试不通过。\t\t\t\t \033[0m"
-				echo -e "\033[41m [ Failed ] Some Ethernet ports fail the performance test.\t\t\t\t \033[0m"
+				echo -e "\033[41m [Failed] Some Ethernet ports fail the performance test.\t\t\t\t \033[0m"
 			fi
 			break
 		elif [ $query -eq 0 ];then
@@ -48,7 +48,7 @@ check_reslut_GE()
                         echo -e "\033[42m [ Pass ] GE Ethernet port performance tests passed.\t\t\t\t \033[0m"
                         break
                 else
-                        echo -e "\033[41m [ Fail ] Some GE Ethernet ports fail the performance test.\t\t\t\t \033[0m"
+                        echo -e "\033[41m [Failed] Some GE Ethernet ports fail the performance test.\t\t\t\t \033[0m"
                         break
                 fi
 	done
@@ -86,13 +86,14 @@ check_reslut_GE_10()
 			echo -e "\033[42m [ Pass ] 10 GE Ethernet port performance tests passed.\t\t\t\t \033[0m"
 			break
 		else
-			echo -e "\033[41m [ Fail ] Some 10 GE Ethernet ports fail the performance test.\t\t\t\t \033[0m"
+			echo -e "\033[41m [Failed] Some 10 GE Ethernet ports fail the performance test.\t\t\t\t \033[0m"
 			break
 		fi
 	done
 }
 
 # rm -rf netperf_net_test.txt
+# check_result
 
 check_reslut_GE
 check_reslut_GE_10
