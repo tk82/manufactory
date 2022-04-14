@@ -1,7 +1,0 @@
-[42m [ Pass ] The BIOS version is correct.							 [0m
-[42m [ Pass ] BMC version is correct.							 [0m
-[42m [ Pass ] The product model in the electronic label has passed the inspection.					 [0m
-[42m [ Pass ] The manufacturer information check in the electronic label pass!				 [0m
-[42m [ Pass ] The configuration quantity of CPU, memory, RAID card, disk, and IO card has not been checked.				 [0m
-[42m [ Pass ] Disk connection rate check passed.						 [0m
-[41m [Failed] Some or all Ethernet ports do not reach the standard negotiation rate!				 [0m
