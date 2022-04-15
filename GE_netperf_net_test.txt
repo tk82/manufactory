@@ -1,4 +1,0 @@
-servreIP: 10.180.0.83
-total_count: 6
-fail_count: 7
-
