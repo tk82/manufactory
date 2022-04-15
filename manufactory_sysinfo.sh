@@ -160,6 +160,7 @@ check_Port_Speed()
 
 rm -f systemInfo.txt
 sh system_xsky.sh > ./systemInto.txt
+
 sync
 check_BIOS_VERSION $product_Model
 check_BMC_VERSION $product_Model
@@ -167,4 +168,5 @@ check_VENDOR_INFO $product_Model
 check_Server_Conf
 check_Disk_Link_Status
 check_Port_Speed
-#rm -f PortLinkSpeed_*
+
+rm -f PortLinkSpeed_*
