@@ -152,7 +152,7 @@ if [ "$model" == "" -o "$N" == "" ];then
 	echo "Command example: sh manufactory.sh XE2120G2 1"
 else
 	if [ $N -lt 21 ];then
-		#sh ./manufactory_install.sh >> intall_log.txt
+		sh ./manufactory_install.sh >> intall_log.txt
 		rm -rf /root/tmp_checkResult
 		rm -f check_result.txt
     mkdir_Path

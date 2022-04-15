@@ -29,7 +29,7 @@ check_reslut_GE()
 		# 判断文件是否存在，不存在则成功；存在再判断失败的次数，失败的次数等于0，则成功；否则失败
 		file_exit=`[[ -e ./GE_netperf_net_test.txt ]] && echo 1 || echo 0`
                 if [ $file_exit -eq 0 ];then
-                        echo -e "\033[42m [ Pass ] GE Ethernet port performance tests passed.\t\t\t\t \033[0m"
+                        echo -e "\033[42m [ Pass ] Do not check GE network.\t\t\t\t \033[0m"
 			break
                 elif [[ $file_exit -eq 1 ]];then
 			fail_total=0
@@ -61,7 +61,7 @@ check_reslut_GE_10()
 		# 判断文件是否存在，不存在则成功；存在再判断失败的次数，失败的次数小于预期，则成功；否则失败
                 file_exit=`[[ -e ./GE_10_netperf_net_test.txt ]] && echo 1 || echo 0`
 		if [ $file_exit -eq 0 ];then
-                        echo -e "\033[42m [ Pass ] 10 GE Ethernet port performance tests passed.\t\t\t\t \033[0m"
+                        echo -e "\033[42m [ Pass ] Do not check 10 GE network..\t\t\t\t \033[0m"
 			break
                 elif [[ $file_exit -eq 1 ]];then
 			fail_total=0
@@ -99,7 +99,7 @@ check_reslut_GE_25()
 		# 判断文件是否存在，不存在则成功；存在再判断失败的次数，失败的次数小于预期，则成功；否则失败
                 file_exit=`[[ -e ./GE_25_netperf_net_test.txt ]] && echo 1 || echo 0`
 		if [ $file_exit -eq 0 ];then
-                        echo -e "\033[42m [ Pass ] 25 GE Ethernet port performance tests passed.\t\t\t\t \033[0m"
+                        echo -e "\033[42m [ Pass ] Do not check 25 GE network.\t\t\t\t \033[0m"
 			break
                 elif [[ $file_exit -eq 1 ]];then
 			fail_total=0

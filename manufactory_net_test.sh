@@ -53,7 +53,6 @@ NETMASK=`cat config.cfg | grep -a "NETMASK" | awk '{print $4}'`
 #serverIP_29="192.168.9.12"
 #serverIP_210="192.168.10.12"
 
-#serverIP_410="192.168.10.14"
 #NETMASK="NETMASK="255.255.255.0"
 
 modify_type()
@@ -80,10 +79,10 @@ config_IP()
 		host=2
 	fi
 
-	# 配置 板载 网卡网口
+	# 配置 板载 网卡网口，替换掉 下面的 102 -- 119 行
         port_list_all=`lshw -c network -businfo |grep I350 | awk '{print $2}'`
         port_list_total=`echo $port_list_all | wc -w`
-        for((port_num = 2; port_num <= port_list_total; port_num++))
+        for((port_num = 1; port_num <= port_list_total; port_num++))
 	do
                 file_name="/etc/sysconfig/network-scripts/ifcfg-`echo $port_list_all | awk '{print $'"$port_num"'}'`"
                 ip_name=`echo -e "serverIP_"$host"$port_num"`
@@ -119,6 +118,7 @@ config_IP()
 	sleep 3
 	ifconfig `echo $port_list_1 | awk '{print $1}'` `echo $ip_name`
 EOF
+
 	port_list_2=`lshw -c network -businfo |grep -Ev "I350|Virtual|Description|=|enp94" | sort | uniq | awk '{print $2}' | grep -v "network"`
 	port_list_2_Num=`lshw -c network -businfo |grep -Ev "I350|Virtual|Description|=|enp94" | sort | uniq | awk '{print $2}' | grep -v "network" | wc -l`
 	for((j = 0; j < port_list_2_Num; j++))
